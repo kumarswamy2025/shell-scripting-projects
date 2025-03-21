@@ -19,8 +19,7 @@ echo "Available Disk Percentage: $available_disk_percentage%"
 
 # Check if available disk space is below 10%
 if [[ $available_disk_percentage -lt 155 ]]; then
-    echo -e "Subject: Disk Space Alert!\n\nWARNING: Disk space is low!" | sendmail $To
-    echo "Alert email sent!"
+    echo "WARNING: Disk space is low!" | mail -s "Disk Space Alert!" $To
 else
     echo "All good 👍"
 fi
