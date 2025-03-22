@@ -135,7 +135,7 @@ Feel free to modify, improve, or expand these scripts! If you have suggestions, 
 ---
 
 ## 📝 Author
-Kumar Swamy Technologies  
+Kumar Swamy  
 📧 Email: yarramneedikumarswamy@gmail.com
 💼 GitHub: github.com/kumarswamy2025/
 
