@@ -1,32 +1,31 @@
-# Shell Scripting Projects 🚀
+# 🌟 Shell Scripting Projects 🚀
 
-This repository contains three shell scripting projects designed for system monitoring and automation. These scripts help in monitoring RAM and disk space, sending alerts, and archiving old logs.
+Welcome to this repository containing a collection of **three shell scripting projects** designed for effective system monitoring and automation. These scripts are essential for monitoring RAM and disk space, sending alerts, and archiving old logs.
 
 ---
 
 ## 📌 Project 1: Monitoring Free RAM Space 🖥️
 
 ### 📝 Description
-This script monitors the available RAM space and gives a warning if it falls below a specified threshold.
+This script actively monitors the available RAM space and provides a warning if it dips below a specified threshold.
 
 ### 📜 Script
 ```bash
 free_space=$(free -mt | grep "Total" | awk '{print $4}')  # Fetch free RAM memory
 min_ram=500   # Minimum RAM threshold
 
-if [[ $free_space -lt $min_ram ]]  # Compare free RAM with the threshold
-then 
-    echo "WARNING: RAM is running low!"
+if [[ $free_space -lt $min_ram ]]; then 
+    echo "⚠️ WARNING: RAM is running low!"
 else
-    echo "RAM Space is sufficient - $free_space MB"
-    echo "RAM Space is sufficient - $((free_space/1024)) GB"
+    echo "✅ RAM Space is sufficient - $free_space MB"
+    echo "✅ RAM Space is sufficient - $((free_space/1024)) GB"
 fi  
 ```
 
 ### 🛠️ How It Works
-- Retrieves available RAM using the `free -mt` command.
-- Compares the available RAM with a predefined minimum value.
-- Displays a warning if RAM is below the threshold.
+- **Fetches** available RAM using the `free -mt` command.
+- **Compares** the available RAM with a predefined minimum value.
+- **Displays** a warning if RAM is below the threshold.
 
 ---
 
@@ -51,31 +50,31 @@ available_disk_percentage=$(echo "$disk_info" | awk '{print $5}' | tr -d '%')  #
 To="kumarswamytechnologies@gmail.com"
 
 # Print disk info
-echo "Total Disk Space: $total_disk_space"
-echo "Used Disk Space: $used_disk_space"
-echo "Available Disk Space: $available_disk_space"
-echo "Available Disk Percentage: $available_disk_percentage%"
+echo "📊 Total Disk Space: $total_disk_space"
+echo "📉 Used Disk Space: $used_disk_space"
+echo "📥 Available Disk Space: $available_disk_space"
+echo "📈 Available Disk Percentage: $available_disk_percentage%"
 
 # Check if available disk space is below 10%
 if [[ $available_disk_percentage -lt 10 ]]; then
-    echo -e "Subject: Disk Space Alert!\n\nWARNING: Disk space is low!" | sendmail $To
-    echo "Alert email sent!"
+    echo -e "Subject: Disk Space Alert!\n\n⚠️ WARNING: Disk space is low!" | sendmail $To
+    echo "✉️ Alert email sent!"
 else
-    echo "All good 👍"
+    echo "✅ All good 👍"
 fi
 ```
 
 ### 🛠️ How It Works
-- Fetches disk usage details using `df -h` and filters the required partition.
-- Extracts total, used, and available disk space.
-- Sends an email alert if the available disk space falls below 10%.
+- **Fetches** disk usage details using `df -h` and filters the required partition.
+- **Extracts** total, used, and available disk space.
+- **Sends** an email alert if the available disk space falls below 10%.
 
 ---
 
 ## 📌 Project 3: Archiving Older Logs 📂📦
 
 ### 📝 Description
-This script finds and compresses log files larger than 20MB and moves them to an archive folder.
+This script identifies and compresses log files larger than 20MB, moving them to an archive folder.
 
 ### 📜 Script
 ```bash
@@ -89,7 +88,7 @@ Run=0
 
 # Checking if directory exists
 if [ ! -d $Base ]; then
-    echo "Directory does not exist: $Base"
+    echo "❌ Directory does not exist: $Base"
     exit 1
 fi
 
@@ -99,10 +98,9 @@ if [ ! -d $Base/archive ]; then
 fi
 
 # Find and archive files larger than 20MB
-for i in $(find $Base -maxdepth $Depth -type f -size +20M)
-do
+for i in $(find $Base -maxdepth $Depth -type f -size +20M); do
     if [ $Run -eq 0 ]; then
-        echo "[$(date "+%Y-%m-%d %H:%M:%S")] Archiving $i ==> $Base/archive"
+        echo "[$(date "+%Y-%m-%d %H:%M:%S")] 🗄️ Archiving $i ==> $Base/archive"
         gzip $i || exit 1
         mv $i.gz $Base/archive || exit 1
     fi
@@ -110,19 +108,19 @@ done
 ```
 
 ### 🛠️ How It Works
-- Checks if the target directory exists.
-- Creates an archive folder if not already present.
-- Finds files larger than 20MB, compresses them using `gzip`, and moves them to the archive.
+- **Checks** if the target directory exists.
+- **Creates** an archive folder if not already present.
+- **Finds** files larger than 20MB, compresses them using `gzip`, and moves them to the archive.
 
 ---
 
 ## 📌 How to Run the Scripts
-1. Copy and paste the respective script into a `.sh` file (e.g., `monitor_ram.sh`).
-2. Give execution permission using:
+1. **Copy and paste** the respective script into a `.sh` file (e.g., `monitor_ram.sh`).
+2. **Give execution permission** using:
    ```bash
    chmod +x script_name.sh
    ```
-3. Run the script using:
+3. **Run the script** using:
    ```bash
    ./script_name.sh
    ```
@@ -135,9 +133,9 @@ Feel free to modify, improve, or expand these scripts! If you have suggestions, 
 ---
 
 ## 📝 Author
-Kumar Swamy  
-📧 Email: yarramneedikumarswamy@gmail.com
-💼 GitHub: github.com/kumarswamy2025/
+**Kumar Swamy**  
+📧 Email: [yarramneedikumarswamy@gmail.com](mailto:yarramneedikumarswamy@gmail.com)  
+💼 GitHub: [github.com/kumarswamy2025](https://github.com/kumarswamy2025)
 
 ---
 
